@@ -1,0 +1,59 @@
+$ include "seed7_05.s7i";
+
+const type: stack is array integer;
+
+const func integer: partitions (inout stack: cards, in integer: subtotal) is func
+  result
+    var integer: part is 0;
+  local
+    var integer: i is 0;
+    var integer: total is 0;
+  begin
+   part := 0;
+   # Hit
+   for i range 0 to 9 do
+     if (cards[i]>0) then
+         total := subtotal+i+1;
+	 if (total < 21) then
+	    # Stand
+	    part := part+1;
+	    # Hit again
+	    cards[i] := cards[i]-1;
+	    part := part+partitions(cards, total);
+	    cards[i] := cards[i]+1;
+	 else
+	   if (total=21) then
+	      # Stand; hit again is an automatic bust
+	      part := part+1;
+	   end if;
+         end if;
+     end if;
+   end for;
+  end func;
+
+const proc: main is func
+
+local
+   var stack: deck is [0] (4,4,4,4,4,4,4,4,4,16);
+   var integer: i is 0;
+   var integer: j is 0;
+   var integer: d is 0;
+   var integer: p is 0;
+    
+begin
+   d := 0;
+   for i range 0 to 9 do
+      # Dealer showing
+      deck[i] := deck[i]-1;
+      p := 0;
+      for j range 0 to 9 do
+	 deck[j] := deck[j]-1;
+	 p := p+partitions(deck, j+1);
+	 deck[j] := deck[j]+1;
+      end for;
+      writeln("Dealer showing " <& i <& " partitions = " <& p);
+      d := d+p;
+      deck[i] := deck[i]+1;
+   end for;
+   writeln("Total partitions = " <& d);
+end func;
