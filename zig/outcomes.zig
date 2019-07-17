@@ -1,5 +1,7 @@
-const std = @import("std");
-const io = std.io;
+const warn = @import("std").debug.warn;
+
+//const std = @import("std");
+//const io = std.io;
 
 fn partitions(cards: *[10]i8, subtotal: u8) u32 {
   var m: u32 = 0;
@@ -27,13 +29,11 @@ fn partitions(cards: *[10]i8, subtotal: u8) u32 {
   return m;
 }
 
-pub fn main() !void
+pub fn main() void
 {
-  var stdout_file = try io.getStdOut();
-  var stdout_file_stream = io.FileOutStream.init(stdout_file);
-  const stdout = &stdout_file_stream.stream;
+//const stdout_file = try std.io.getStdOut();
 
-  var deck: [10]i8 = []i8{4,4,4,4,4,4,4,4,4,16};
+  var deck = [_]i8{4,4,4,4,4,4,4,4,4,16};
   var d: u32 = 0;
   
   var i: u8 = 0;
@@ -48,9 +48,9 @@ pub fn main() !void
       deck[j] += 1;
     }
 
-    try stdout.print("Dealer showing {} partitions = {}\n",i,p);
+    warn("Dealer showing {} partitions = {}\n",i,p);
     d += p;
     deck[i] += 1;
   }
-  try stdout.print("Total partitions = {}\n",d);
+  warn("Total partitions = {}\n",d);
 }
