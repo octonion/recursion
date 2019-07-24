@@ -29,9 +29,7 @@ partitions(cards, subtotal)
 
 main()
 {
-
-  extrn deck;
-  auto d, i, j, p;
+  auto d, i, j, p, deck[10];
   
   i = 0;
   while (i < 9) {
@@ -60,4 +58,3 @@ main()
   printf("Total partitions = %d*n",d);
   return(0);
 }
-deck[10];
