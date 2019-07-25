@@ -2,11 +2,10 @@ get "libhdr"
 
 let partitions(cards, subtotal) = valof $(
   let m = 0
-	let total = 0
 	
   for i = 0 to 9 do $(
     if cards!i > 0 $(
-      total := subtotal+i+1
+      let total = subtotal+i+1
       test (total < 21) then $(
         m := m+1
 				cards!i := cards!i-1
@@ -26,15 +25,14 @@ let start() = valof $(
 
   let deck = getvec(10)
 	let d=0
-	let p=0
 	let n=0
 	
   for i = 0 to 8 do $( deck!i := 4 $)
   deck!9 := 16
   
   for i = 0 to 9 do $(
+    let p = 0
     deck!i := deck!i-1
-    p := 0
     for j = 0 to 9 do $(
       deck!j := deck!j-1
       n := partitions(deck, j+1)
