@@ -10,14 +10,14 @@ partitions(cards, subtotal)
       total = subtotal+i+1;
       if (total < 21) {
         /* Stand */
-        m = m+1;
+        m++;
         /* Hit again */
-        cards[i] = cards[i]-1;
+        cards[i]--;
         m = m+partitions(cards, total);
-        cards[i] = cards[i]+1;
+        cards[i]++;
       } else if (total==21) {
         /* Stand; hit again is an automatic bust */
-        m = m+1;
+        m++;
         i++;
         break;
       }
@@ -41,18 +41,18 @@ main()
   i = 0;
   while (i < 10) {
     /* Dealer showing */
-    deck[i] = deck[i]-1;
+    deck[i]--;
     p = 0;
     j = 0;
     while (j < 10) {
-      deck[j] = deck[j]-1;
+      deck[j]--;
       p = p+partitions(deck, j+1);
-      deck[j] = deck[j]+1;
+      deck[j]++;
       j++;
     }
     printf("Dealer showing %d partitions = %d*n",i,p);
     d = d+p;
-    deck[i] = deck[i]+1;
+    deck[i]++;
     i++;
   }
   printf("Total partitions = %d*n",d);
