@@ -1,4 +1,4 @@
-const warn = @import("std").debug.warn;
+const std = @import("std");
 
 //const std = @import("std");
 //const io = std.io;
@@ -29,9 +29,8 @@ fn partitions(cards: *[10]i8, subtotal: u8) u32 {
   return m;
 }
 
-pub fn main() void
-{
-//const stdout_file = try std.io.getStdOut();
+pub fn main() !void {
+  const stdout = std.io.getStdOut().outStream();
 
   var deck = [_]i8{4,4,4,4,4,4,4,4,4,16};
   var d: u32 = 0;
@@ -48,9 +47,9 @@ pub fn main() void
       deck[j] += 1;
     }
 
-    warn("Dealer showing {} partitions = {}\n",i,p);
+    try stdout.print("Dealer showing {} partitions = {}\n", .{i,p});
     d += p;
     deck[i] += 1;
   }
-  warn("Total partitions = {}\n",d);
+  try stdout.print("Total partitions = {}\n", .{d});
 }
