@@ -1,0 +1,3 @@
+```bash
+clisp outcomes.lisp
+```
