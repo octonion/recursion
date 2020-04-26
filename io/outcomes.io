@@ -3,22 +3,21 @@ result := 0;
 // Hit
 //cards asString println;
 for(i,0,9,
-    if((cards at(i))>0,
-      total := subtotal+i;
-      if(total<21,
+    if(cards at(i)>0) then(
+      total := subtotal+i+1;
+      if(total<21) then(
         // Stand
         result := result+1;
         // Hit again
         cards atPut(i, (cards at(i))-1);
         result := result+partitions(cards, total);
         cards atPut(i, (cards at(i))+1);
-        );
-      if(total==21,
+      ) elseif(total==21) then(
         // Stand; hit again is an automatic bust
         result := result+1;
         break;
-        );
-        );
+      );
+    );
   );
   result;
 );
@@ -33,7 +32,7 @@ for(i,0,9,
     p := 0;
     for(j,0,9,
         deck atPut(j,(deck at(j))-1)
-        p := p+partitions(deck, j)
+        p := p+partitions(deck, j+1)
 	deck atPut(j,(deck at(j))+1)
     )
     list("Dealer showing ",i asString," partitions = ",p asString) join println;
