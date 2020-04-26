@@ -1,0 +1,23 @@
+This is SBCL 1.4.5.debian, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+
+(0 417334) 
+(1 560954) 
+(2 658854) 
+(3 679464) 
+(4 680299) 
+(5 680305) 
+(6 680305) 
+(7 680305) 
+(8 680305) 
+(9 680305) 
+6398430 
+
+real	0m0.789s
+user	0m0.773s
+sys	0m0.013s
