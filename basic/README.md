@@ -1,4 +1,4 @@
 ```bash
-fbc -O3 outcomes.bas
+fbc -O 3 outcomes.bas
 ./outcomes
 ```
