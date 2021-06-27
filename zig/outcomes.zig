@@ -30,7 +30,7 @@ fn partitions(cards: *[10]i8, subtotal: u8) u32 {
 }
 
 pub fn main() !void {
-  const stdout = std.io.getStdOut().outStream();
+  const stdout = std.io.getStdOut().writer();
 
   var deck = [_]i8{4,4,4,4,4,4,4,4,4,16};
   var d: u32 = 0;

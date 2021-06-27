@@ -1,3 +1,3 @@
 ```bash
-zig build-exe --release-fast outcomes.zig
+zig build-exe -O ReleaseFast outcomes.zig
 ```
