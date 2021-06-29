@@ -1,5 +1,5 @@
 ```bash
-zig build-lib --release-fast partitions.zig --name libpartitions.so --library c
+zig build-lib -dynamic -O ReleaseFast partitions.zig --library c
 python outcomes2.py
 python3 outcomes3.py
 ```
